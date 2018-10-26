@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Accouting Website</title>
+
+    <style>
+.area {
+    margin-left: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial;
+}
+.results-area {
+    margin-left: 30px;
+}
+.results-area-2 {
+    margin-left: 30px; 
+    font-size: 20px;
+}
+.result {
+    color: red;
+    font-size: 25px;
+}
+    </style>
+</head>
+
+<body>
+<h1>Income Statement Calculations</h1>
+<div class="area">
+<p></p>
+<h3>What do you want to calculate?</h3>
+<select id="values">
+        <option id="sr">Sales Revenue</option>
+        <option id="oi">Opening Inventories</option>
+        <option id="pc">Purchases</option>
+        <option id="ci">Closing Inventories</option>
+        <option id="cg">Cost of goods sold</option>
+        <option id="gp">Gross Profit</option>
+    </select>
+<br>
+<p><h4>Input below all the values you are given, and the software will calculate the answer, assuming you input all the necessary values.</h4></p>
+<p>The more values the better, and don't worry, the system will not get confused.</p>
+   Sales Revenue: <input id="srev" type="text"> <p></p>
+    Opening Inventories: <input id="opinv" type="text"> <p></p>
+    Purchases: <input id="purch" type="text"> <p></p>
+    Closing Inventories: <input id="cst" type="text"> <p></p>
+   Cost of goods sold:  <input id="cgs" type="text"> <p></p>
+   Gross Profit: <input id="gprof" type="text"> <p></p>
+
+   <button id="b1" onclick="calculate()">Calculate</button>
+</div>
+<div class="results-area">
+        <div>
+    <p id="demo" class="result"></p>
+        </div>
+        <div>
+    <p id="demo2"></p>
+        </div>
+         <div>
+     <p id="demo3"></p>
+         </div>
+   </div>
+</div>
+<div>
+    <h1>Rights Issue Calculations</h1>
+    <p><h4>Calculate the results of a rights issue.</h4></p>
+<p>Input values below:</p>
+   Share Capital: <input id="scap" type="text"> <p></p>
+   Share Price: <input id="spri" type="text"> <p></p>
+   New Price: <input id="npri" type="text"> <p></p>
+   Ratio: <input id="rati1" type="text"> /  <input id="rati2" type="text"><p></p> 
+   Percentage of shares bought: <input id="pctg" type="text"> <p></p>
+    Share Premium Account: <input id="spac" type="text"> <p></p>
+    Retained Earnings: <input id="rear" type="text"> <p></p>
+   Capital Reserve: <input id="cptr" type="text"> <p></p>
+   
+
+</div>
+<button id="b2" onclick="calcRightsIssue()">Calculate</button>
+<br>
+<div class="results-area-2">
+    <div>
+<p id="d1"></p>
+    </div>
+    <div>
+<p id="d2"></p>
+    </div>
+     <div>
+ <p id="d3"></p>
+     </div>
+<div>
+     <p id="d4"></p>
+</div>
+<div>
+    <p id="d5"></p>
+</div>
+</div>
+</body>
+
+<script>
+
+        var salesRevenue = 0;
+        var openingInventory = 0;
+        var purchases = 0;
+        var closingInventories = 0;
+        var costOfGoodsSold = 0;
+        var grossProfit = 0;
+                    var x = 0;
+
+    function calculate() {
+        salesRevenue = Number(document.getElementById("srev").value);
+        openingInventory = Number(document.getElementById("opinv").value);
+        purchases = Number(document.getElementById("purch").value);
+        closingInventories = Number(document.getElementById("cst").value);
+        costOfGoodsSold = Number(document.getElementById("cgs").value);
+        grossProfit = Number(document.getElementById("gprof").value);
+           if (document.getElementById("values").value == "Sales Revenue") {
+                document.getElementById("demo2").innerHTML = "Sales Revenue = Gross Profit + Cost of Goods Sold";
+                document.getElementById("demo2").innerHTML = "Sales Revenue = Gross Profit + (Opening Inventories + Purchases - Closing Inventories)";
+                if (grossProfit == "") {
+                    alert("Please supply sufficient information");
+                }
+                else if (costOfGoodsSold == "") {
+                    x = salesRevenue - (openingInventory + purchases - closingInventories);
+                    document.getElementById("demo").innerHTML = x;
+                }
+                else {
+                    x = grossProfit + costOfGoodsSold;
+                    document.getElementById("demo").innerHTML = x;
+                }
+         }
+            else if (document.getElementById("values").value == "Opening Inventories") {
+                document.getElementById("demo2").innerHTML = "Opening Inventories = Cost of Goods Sold + Closing Inventories - Purchases";
+                document.getElementById("demo2").innerHTML = "Opening Inventories = (Gross Profit - Sales Revenue) + Closing Inventories - Purchases";
+                 if (purchases == "" || closingInventories == "") {
+                    alert("Please supply sufficient information");
+                 }
+                 else if (costOfGoodsSold == "") {
+                     x = salesRevenue - grossProfit - purchases + closingInventories;
+                     document.getElementById("demo").innerHTML = x;
+                 }
+                 else {
+                x = costOfGoodsSold + closingInventories - purchases;
+                    document.getElementById("demo").innerHTML = x;
+                 }     
+            }
+            else if (document.getElementById("values").value == "Purchases") {
+                document.getElementById("demo2").innerHTML = "Purchases = Closing Inventories + Cost of goods sold - Opening inventories";
+                document.getElementById("demo2").innerHTML = "Purchases = Closing Inventories + (Sales Revenue - Gross Profit) - Opening inventories";
+                if (closingInventories == "" || openingInventory == "") {
+                    alert("Please supply sufficient information");
+                }
+                else if (costOfGoodsSold != "") {
+                    x = closingInventories + costOfGoodsSold - openingInventory;
+                    document.getElementById("demo").innerHTML = x;
+                }
+                else {
+                    x = closingInventories + (salesRevenue - grossProfit) - openingInventory;
+                    document.getElementById("demo").innerHTML = x;
+                }         
+         }
+         else if (document.getElementById("values").value == "Closing Inventories") {
+                document.getElementById("demo2").innerHTML = "Closing Inventories = Purchases + Opening Inventory + Cost of goods sold"; 
+                document.getElementById("demo3").innerHTML = "Closing Inventories = Purchases + Opening Inventory - (Sales Revenue - Gross Profit)";
+            if (purchases == "" || openingInventory == "") { 
+                alert("Please supply sufficient information");
+               }
+               else if (costOfGoodsSold != "") {
+                x = purchases + openingInventory - costOfGoodsSold;
+                    document.getElementById("demo").innerHTML = x; 
+               }
+               else if (costOfGoodsSold == "" && grossProfit == "") {
+                    alert("Please supply sufficient information");
+                }
+               else {
+                   if (grossProfit == "") {
+              x = purchases + openingInventory - salesRevenue + grossProfit;
+                    document.getElementById("demo").innerHTML = x;
+                }
+                }
+
+         }
+            else if (document.getElementById("values").value == "Cost of goods sold") {
+            document.getElementById("demo2").innerHTML = "Cost of goods sold = Sales Revenue - Gross Profit";
+            document.getElementById("demo3").innerHTML = "Cost of goods sold = Opening Inventories + Purchases - Closing Inventories";
+                if (salesRevenue == "")  {
+                    alert("Please supply sufficient information");
+                }
+                else if (grossProfit == "") {
+                    x = openingInventory + purchases - closingInventories;
+                    document.getElementById("demo").innerHTML = x;
+                }
+                else {
+                    x = salesRevenue - grossProfit;
+                    document.getElementById("demo").innerHTML = x;
+                }
+         }
+            else if (document.getElementById("values").value == "Gross Profit") {
+            document.getElementById("demo2").innerHTML = "Gross Profit = Sales Revenue - Cost of goods sold";
+            document.getElementById("demo3").innerHTML = "Gross Profit = Sales Revenue - (Opening Inventories + Purhcases - Closing Inventories)";
+            if (salesRevenue == "") {
+                alert("Please supply sufficient information");
+            }
+            else if (costOfGoodsSold == "") {
+                x = salesRevenue - (openingInventory + purchases - closingInventories);
+                document.getElementById("demo").innerHTML = x;
+            }
+            else {
+                x = salesRevenue - costOfGoodsSold;
+                document.getElementById("demo").innerHTML = x;
+            }
+         }
+    }
+
+    var ratio = 0;
+        var currentShareCapital = 0;
+        var premiumValue = 0;
+        var newPrice = 0;
+        var nominalPrice = 0;
+        var shares = 0;
+        var reserve = 0;
+        var retainedEarnings =  0;
+        var newShareCapital = 0;
+            var newPremium = 0;
+            var total = 0;
+            var percentage = 0;
+
+    function calcRightsIssue() {
+        ratio = Number(document.getElementById("rati1").value)/Number(document.getElementById("rati2").value);
+         currentShareCapital = Number(document.getElementById("scap").value);
+        premiumValue = Number(document.getElementById("spac").value);
+        newPrice = Number(document.getElementById("npri").value);
+        nominalPrice = Number(document.getElementById("spri").value);
+        shares = currentShareCapital/nominalPrice;
+        reserve = Number(document.getElementById("cptr").value);
+        retainedEarnings =  Number(document.getElementById("rear").value);
+        percentage = Number(document.getElementById("pctg").value);
+        if (ratio == "" || newPrice == "" || nominalPrice == "" || currentShareCapital == "" || premiumValue == "") {
+            alert("Please supply sufficient information");
+        }
+        else {
+            newShareCapital = currentShareCapital + (shares * ratio * nominalPrice * (percentage/100));
+            newPremium = premiumValue + (shares * (percentage/100) * ratio * (newPrice - nominalPrice));
+            total = reserve + newShareCapital + newPremium + retainedEarnings;
+            document.getElementById("d1").innerHTML = ("<b> New Share Capital: </b>"+ String(Math.round(newShareCapital * 100) / 100));
+            document.getElementById("d2").innerHTML = ("<b>New Share Premium Account: </b>" + String(Math.round(newPremium * 100) / 100));
+            document.getElementById("d3").innerHTML = ("<b>Capital Reserve: </b>" + String(reserve));
+            document.getElementById("d4").innerHTML = ("<b>Retained Earnings: </b>" + String(retainedEarnings));
+            document.getElementById("d5").innerHTML = ("<b>New Total: </b>" + String(Math.round(total * 100) / 100));
+        }
+    }
+
+</script>
+
+</html>
