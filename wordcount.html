@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<!-- This website will count the words in a text for you, ignoring anything inside parentheses. 
+    It is therefore suitable for students writing essays with Harvard-style referencing. -->
+<style>
+.mytext {
+    width: 500px;
+    height: 500px;
+}
+h1 {
+    text-align: center;
+}
+.main {
+    margin-left: 30%;
+}
+.bt {
+    margin-left: 45%;
+    padding: 1%;
+}
+.res {
+    margin-left: 42%;
+    font-size: 25px; 
+}
+</style>
+
+<head>
+
+    <title>Word Count</title>
+
+</head>
+
+<body>
+        <h1>Word Count Calculator for Harvard-style Referencing</h1>
+<div class="main">
+    <br>
+<textarea type="text" id="es" class="mytext"> </textarea>
+<br>
+</div>
+<button id="bt" class="bt" onclick="countWords()">Count</button>
+
+<br>
+<br>
+<div id="res" class="res">
+
+</div>
+
+
+</body>
+
+<script>
+    function countWords(es) {
+        es =  String(document.getElementById("es").value);
+        var wordCount = 0;
+        var insideParentheses = false;
+        var i;
+        for (i = 0; i < es.length; i++) {
+            if (es[i] === " " && insideParentheses === false) {  
+                wordCount++;
+                console.log(wordCount);
+            }
+            else if (es[i] === "(") { 
+                if (es[i-1] === " ") {
+                insideParentheses = true;
+                console.log(insideParentheses);
+                wordCount--;
+                }
+                else {
+                insideParentheses = true;
+                console.log(insideParentheses);
+            }
+            }
+            else if (es[i] === ")") {
+                insideParentheses = false;
+                console.log(insideParentheses);
+            }
+            else {
+                console.log("nothing to see here");
+            }
+        }
+        wordCount++;
+        document.getElementById("res").innerHTML = ("<b>Word Count: </b>" + wordCount);
+    }
+</script>
+</html>
