@@ -6,16 +6,18 @@
     It is therefore suitable for students writing essays with Harvard-style referencing. -->
 <style>
 .mytext {
-    width: 500px;
-    height: 500px;
+    width: 800px;
+    height: 300px;
+    margin-left: 20%;
 }
 h1 {
     text-align: center;
+    padding-top: 30px;
 }
 .main {
     margin-left: 30%;
 }
-.bt {
+.btn-primary {
     margin-left: 45%;
     padding: 1%;
 }
@@ -23,7 +25,12 @@ h1 {
     margin-left: 42%;
     font-size: 25px; 
 }
+.p {
+    text-align: center;
+}
 </style>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 <head>
 
@@ -33,12 +40,17 @@ h1 {
 
 <body>
         <h1>Word Count Calculator for Harvard-style Referencing</h1>
-<div class="main">
+        <br>
+        <p class ="p">This counter will count the number of words in a text without taking parentheses into consideration. It is ideal for people using the Harvard-style referencing system. </p>
+        <p class="p">If you have information in parentheses that is not a reference, make sure to add those words to the count afterwards. The program does not know what is a reference or not!</p>
+        <p class="p"><b>Update: The area for pasting your text adds a space to the beginning and counts that as a word. Remember to delete that before starting!</b></p>
     <br>
 <textarea type="text" id="es" class="mytext"> </textarea>
+<div class="main"></div>
 <br>
 </div>
-<button id="bt" class="bt" onclick="countWords()">Count</button>
+<br>
+<button id="bt" class="btn btn-primary" onclick="countWords()">Count</button>
 
 <br>
 <br>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <title>Accouting Website</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+.area {
+    margin-left: 40px;
+}
+h1 {
+    text-align: center;
+    font-family: Arial;
+    margin-top: 30px;
+}
+.results-area {
+    margin-left: 40px;
+}
+.result {
+    color: red;
+    font-size: 25px;
+}
+.custom-select {
+    width: 20%;
+}
+    </style>
+</head>
+
+<body>
+<div class="header-img"></div>
+<h1>Income Statement Calculations</h1>
+<div class="area">
+<p></p>
+<h3>What do you want to calculate?</h3>
+<br>
+<select id="values" class="custom-select">
+        <option id="sr">Sales Revenue</option>
+        <option id="oi">Opening Inventories</option>
+        <option id="pc">Purchases</option>
+        <option id="ci">Closing Inventories</option>
+        <option id="cg">Cost of goods sold</option>
+        <option id="gp">Gross Profit</option>
+    </select>
+<br>
+<br>
+<p><h5>Input below all the values you are given, and the software will calculate the answer, assuming you input all the necessary values.</h5></p>
+<p>The more values the better, and don't worry, the system will not get confused.</p>
+   Sales Revenue: <input id="srev" type="text"> <p></p>
+    Opening Inventories: <input id="opinv" type="text"> <p></p>
+    Purchases: <input id="purch" type="text"> <p></p>
+    Closing Inventories: <input id="cst" type="text"> <p></p>
+   Cost of goods sold:  <input id="cgs" type="text"> <p></p>
+   Gross Profit: <input id="gprof" type="text"> <p></p>
+
+   <button id="b1" class="btn btn-danger" onclick="calculate()">Calculate</button>
+</div>
+<br>
+<div class="results-area">
+        <div>
+    <p id="demo" class="result"></p>
+        </div>
+        <div>
+    <p id="demo2"></p>
+        </div>
+         <div>
+     <p id="demo3"></p>
+         </div>
+   </div>
+</div>
+
+</body>
+
+<script>
+        var salesRevenue = 0;
+        var openingInventory = 0;
+        var purchases = 0;
+        var closingInventories = 0;
+        var costOfGoodsSold = 0;
+        var grossProfit = 0;
+                    var x = 0;
+    function calculate() {
+        salesRevenue = Number(document.getElementById("srev").value);
+        openingInventory = Number(document.getElementById("opinv").value);
+        purchases = Number(document.getElementById("purch").value);
+        closingInventories = Number(document.getElementById("cst").value);
+        costOfGoodsSold = Number(document.getElementById("cgs").value);
+        grossProfit = Number(document.getElementById("gprof").value);
+           if (document.getElementById("values").value == "Sales Revenue") {
+                document.getElementById("demo2").innerHTML = "Sales Revenue = Gross Profit + Cost of Goods Sold";
+                document.getElementById("demo2").innerHTML = "Sales Revenue = Gross Profit + (Opening Inventories + Purchases - Closing Inventories)";
+                if (grossProfit == "") {
+                    alert("Please supply sufficient information");
+                }
+                else if (costOfGoodsSold == "") {
+                    x = salesRevenue - (openingInventory + purchases - closingInventories);
+                    document.getElementById("demo").innerHTML = x;
+                }
+                else {
+                    x = grossProfit + costOfGoodsSold;
+                    document.getElementById("demo").innerHTML = x;
+                }
+         }
+            else if (document.getElementById("values").value == "Opening Inventories") {
+                document.getElementById("demo2").innerHTML = "Opening Inventories = Cost of Goods Sold + Closing Inventories - Purchases";
+                document.getElementById("demo2").innerHTML = "Opening Inventories = (Gross Profit - Sales Revenue) + Closing Inventories - Purchases";
+                 if (purchases == "" || closingInventories == "") {
+                    alert("Please supply sufficient information");
+                 }
+                 else if (costOfGoodsSold == "") {
+                     x = salesRevenue - grossProfit - purchases + closingInventories;
+                     document.getElementById("demo").innerHTML = x;
+                 }
+                 else {
+                x = costOfGoodsSold + closingInventories - purchases;
+                    document.getElementById("demo").innerHTML = x;
+                 }     
+            }
+            else if (document.getElementById("values").value == "Purchases") {
+                document.getElementById("demo2").innerHTML = "Purchases = Closing Inventories + Cost of goods sold - Opening inventories";
+                document.getElementById("demo2").innerHTML = "Purchases = Closing Inventories + (Sales Revenue - Gross Profit) - Opening inventories";
+                if (closingInventories == "" || openingInventory == "") {
+                    alert("Please supply sufficient information");
+                }
+                else if (costOfGoodsSold != "") {
+                    x = closingInventories + costOfGoodsSold - openingInventory;
+                    document.getElementById("demo").innerHTML = x;
+                }
+                else {
+                    x = closingInventories + (salesRevenue - grossProfit) - openingInventory;
+                    document.getElementById("demo").innerHTML = x;
+                }         
+         }
+         else if (document.getElementById("values").value == "Closing Inventories") {
+                document.getElementById("demo2").innerHTML = "Closing Inventories = Purchases + Opening Inventory + Cost of goods sold"; 
+                document.getElementById("demo3").innerHTML = "Closing Inventories = Purchases + Opening Inventory - (Sales Revenue - Gross Profit)";
+            if (purchases == "" || openingInventory == "") { 
+                alert("Please supply sufficient information");
+               }
+               else if (costOfGoodsSold != "") {
+                x = purchases + openingInventory - costOfGoodsSold;
+                    document.getElementById("demo").innerHTML = x; 
+               }
+               else if (costOfGoodsSold == "" && grossProfit == "") {
+                    alert("Please supply sufficient information");
+                }
+               else {
+                   if (grossProfit == "") {
+              x = purchases + openingInventory - salesRevenue + grossProfit;
+                    document.getElementById("demo").innerHTML = x;
+                }
+                }
+         }
+            else if (document.getElementById("values").value == "Cost of goods sold") {
+            document.getElementById("demo2").innerHTML = "Cost of goods sold = Sales Revenue - Gross Profit";
+            document.getElementById("demo3").innerHTML = "Cost of goods sold = Opening Inventories + Purchases - Closing Inventories";
+                if (salesRevenue == "")  {
+                    alert("Please supply sufficient information");
+                }
+                else if (grossProfit == "") {
+                    x = openingInventory + purchases - closingInventories;
+                    document.getElementById("demo").innerHTML = x;
+                }
+                else {
+                    x = salesRevenue - grossProfit;
+                    document.getElementById("demo").innerHTML = x;
+                }
+         }
+            else if (document.getElementById("values").value == "Gross Profit") {
+            document.getElementById("demo2").innerHTML = "Gross Profit = Sales Revenue - Cost of goods sold";
+            document.getElementById("demo3").innerHTML = "Gross Profit = Sales Revenue - (Opening Inventories + Purhcases - Closing Inventories)";
+            if (salesRevenue == "") {
+                alert("Please supply sufficient information");
+            }
+            else if (costOfGoodsSold == "") {
+                x = salesRevenue - (openingInventory + purchases - closingInventories);
+                document.getElementById("demo").innerHTML = x;
+            }
+            else {
+                x = salesRevenue - costOfGoodsSold;
+                document.getElementById("demo").innerHTML = x;
+            }
+         }
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <title>Accouting Website</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+.area {
+    margin-left: 20px;
+}
+h1 {
+    text-align: center;
+    font-family: Arial;
+}
+.rights-issue {
+    margin-left: 30px;
+}
+.results-area-2 {
+    margin-left: 30px; 
+    font-size: 20px;
+}
+.result {
+    color: red;
+    font-size: 25px;
+}
+    </style>
+</head>
+
+<body>
+<div class="results-area">
+        <div>
+    <p id="demo" class="result"></p>
+        </div>
+        <div>
+    <p id="demo2"></p>
+        </div>
+         <div>
+     <p id="demo3"></p>
+         </div>
+   </div>
+</div>
+<div class="rights-issue">
+    <h1>Rights Issue Calculations</h1>
+    <p><h4>Calculate the results of a rights issue.</h4></p>
+<p>Input values below:</p>
+   Share Capital: <input id="scap" type="text"> <p></p>
+   Share Price: <input id="spri" type="text"> <p></p>
+   New Price: <input id="npri" type="text"> <p></p>
+   Ratio: <input id="rati1" type="text"> /  <input id="rati2" type="text"><p></p> 
+   Percentage of shares bought: <input id="pctg" type="text"> <p></p>
+    Share Premium Account: <input id="spac" type="text"> <p></p>
+    Retained Earnings: <input id="rear" type="text"> <p></p>
+   Capital Reserve: <input id="cptr" type="text"> <p></p>
+   
+
+
+<button id="b2" class="btn btn-danger" onclick="calcRightsIssue()">Calculate</button>
+</div>
+<br>
+<div class="results-area-2">
+    <div>
+<p id="d1"></p>
+    </div>
+    <div>
+<p id="d2"></p>
+    </div>
+     <div>
+ <p id="d3"></p>
+     </div>
+<div>
+     <p id="d4"></p>
+</div>
+<div>
+    <p id="d5"></p>
+</div>
+</div>
+
+
+
+</body>
+
+<script>
+    var ratio = 0;
+        var currentShareCapital = 0;
+        var premiumValue = 0;
+        var newPrice = 0;
+        var nominalPrice = 0;
+        var shares = 0;
+        var reserve = 0;
+        var retainedEarnings =  0;
+        var newShareCapital = 0;
+            var newPremium = 0;
+            var total = 0;
+            var percentage = 0;
+    function calcRightsIssue() {
+        ratio = Number(document.getElementById("rati1").value)/Number(document.getElementById("rati2").value);
+         currentShareCapital = Number(document.getElementById("scap").value);
+        premiumValue = Number(document.getElementById("spac").value);
+        newPrice = Number(document.getElementById("npri").value);
+        nominalPrice = Number(document.getElementById("spri").value);
+        shares = currentShareCapital/nominalPrice;
+        reserve = Number(document.getElementById("cptr").value);
+        retainedEarnings =  Number(document.getElementById("rear").value);
+        percentage = Number(document.getElementById("pctg").value);
+        if (ratio == "" || newPrice == "" || nominalPrice == "" || currentShareCapital == "" || premiumValue == "") {
+            alert("Please supply sufficient information");
+        }
+        else {
+            newShareCapital = currentShareCapital + (shares * ratio * nominalPrice * (percentage/100));
+            newPremium = premiumValue + (shares * (percentage/100) * ratio * (newPrice - nominalPrice));
+            total = reserve + newShareCapital + newPremium + retainedEarnings;
+            document.getElementById("d1").innerHTML = ("<b> New Share Capital: </b>"+ String(Math.round(newShareCapital * 100) / 100));
+            document.getElementById("d2").innerHTML = ("<b>New Share Premium Account: </b>" + String(Math.round(newPremium * 100) / 100));
+            document.getElementById("d3").innerHTML = ("<b>Capital Reserve: </b>" + String(reserve));
+            document.getElementById("d4").innerHTML = ("<b>Retained Earnings: </b>" + String(retainedEarnings));
+            document.getElementById("d5").innerHTML = ("<b>New Total: </b>" + String(Math.round(total * 100) / 100));
+        }
+    }
+</script>
+
+</html>

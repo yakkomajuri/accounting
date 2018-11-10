@@ -1,0 +1,212 @@
+<!--DOCTYPE HTML-->
+
+<html>
+
+<head>
+
+<style>
+h1 {
+    text-align: center;
+}
+.slidecontainer{
+    margin-left: 36%;
+}
+.buttons {
+    margin-left: 36%;
+}
+.p-text {
+    margin-left: 16%; 
+    font-size: 22px;
+}
+.txt {
+    padding-right: 6px;
+    font-size: 16px;
+}
+input[type=range] {
+  -webkit-appearance: none;
+  width: 27%;
+  margin: 5.8px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #17220b, 0px 0px 1px #243511;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 20px;
+  width: 16px;
+  border-radius: 3px;
+  background: #adacab;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #e1edf7;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #17220b, 0px 0px 1px #243511;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 20px;
+  width: 16px;
+  border-radius: 3px;
+  background: #adacab;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #000000;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #17220b, 0px 0px 1px #243511;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #17220b, 0px 0px 1px #243511;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 20px;
+  width: 16px;
+  border-radius: 3px;
+  background: #eda53d;
+  cursor: pointer;
+  height: 8.4px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #e1edf7;
+}
+</style>
+<br>
+<br>
+<title>
+Expectancy Theory
+</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Expectancy Theory Calculator</h1>
+    <br>
+    <div class="slidecontainer">
+        <span class="txt">Valence:</span>  <input type="range" step="0.01" min="-1" max="1" value="0" class="slider" id="val">  <span id="vaV">0</span><br><br>
+        <span class="txt">Expectancy:</span>  <input type="range" step="0.01" min="0" max="1" value="0.5" class="slider" id="exp">  <span id="exV">0.5</span> <br><br>
+        <span class="txt">Instrumentality:</span>  <input type="range" step="0.01" min="0" max="1" value="0.5" class="slider" id="ins">  <span id="inV">0.5</span><br><br>
+        <br>
+        <br>
+        <span class="txt">Motivation (Result):</span>  <input type="range" step="0.01" min="-1" max="1" value="0" class="slider" id="mot">  <span id="moV">0</span><br>
+       <br> <br> <p class="p-text"><b>F = V x I x E</b></p>
+      </div>
+      <div class="buttons">
+          <br>
+          <button id="b1" class="btn btn-danger" onclick="carSalesman()">Car Salesman</button>   <button id="b2" class="btn btn-danger" onclick="constWorker()">Construction Worker</button>   <button id="b3"class="btn btn-danger" onclick="doctor()">Doctor</button>
+      </div>
+</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+<script>
+var mot = 0;
+var exp = 0;
+var ins = 0;
+var val = 0;
+function getMot() {
+exp = document.getElementById("exp").value;
+ins = document.getElementById("ins").value;
+val = document.getElementById("val").value;
+mot = exp * ins * val;
+}
+$('#exp').on('input', function() {
+getMot();
+document.getElementById("mot").value = mot;
+document.getElementById("exV").innerHTML = exp;
+document.getElementById("moV").innerHTML = (String(Math.round(mot * 100) / 100));
+})
+$('#ins').on('input', function() {
+getMot();
+document.getElementById("mot").value = mot;
+document.getElementById("inV").innerHTML = ins;
+document.getElementById("moV").innerHTML = (String(Math.round(mot * 100) / 100));
+})
+$('#val').on('input', function() {
+getMot();
+document.getElementById("mot").value = mot;
+document.getElementById("vaV").innerHTML = val;
+document.getElementById("moV").innerHTML = (String(Math.round(mot * 100) / 100));
+})
+function carSalesman() {
+var ex = 0.6;
+var int = 0.85;
+var va = 0.8;
+var mo = ex * int * va;
+document.getElementById("mot").value = mo;
+document.getElementById("val").value = va;
+document.getElementById("ins").value = int;
+document.getElementById("exp").value = ex;
+document.getElementById("vaV").innerHTML = va;
+document.getElementById("inV").innerHTML = int;
+document.getElementById("exV").innerHTML = ex;
+document.getElementById("moV").innerHTML = (String(Math.round(mo * 100) / 100));
+}
+function constWorker() {
+var ex = 0.8;
+var int = 0.4;
+var va = 0.3;
+var mo = ex * int * va;
+document.getElementById("mot").value = mo;
+document.getElementById("val").value = va;
+document.getElementById("ins").value = int;
+document.getElementById("exp").value = ex;
+document.getElementById("vaV").innerHTML = va;
+document.getElementById("inV").innerHTML = int;
+document.getElementById("exV").innerHTML = ex;
+document.getElementById("moV").innerHTML = (String(Math.round(mo * 100) / 100));
+}
+function doctor() {
+var ex = 0.9;
+var int = 0.8;
+var va = 0.75;
+var mo = ex * int * va;
+document.getElementById("mot").value = mo;
+document.getElementById("val").value = va;
+document.getElementById("ins").value = int;
+document.getElementById("exp").value = ex;
+document.getElementById("vaV").innerHTML = va;
+document.getElementById("inV").innerHTML = int;
+document.getElementById("exV").innerHTML = ex;
+document.getElementById("moV").innerHTML = (String(Math.round(mo * 100) / 100));
+}
+</script>
+
+</html>
