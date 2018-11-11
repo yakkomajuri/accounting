@@ -6,32 +6,50 @@
     It is therefore suitable for students writing essays with Harvard-style referencing. -->
 <style>
 .mytext {
-    width: 800px;
+    width: 60%;
     height: 300px;
     margin-left: 20%;
+    background: transparent;
+    color: white;
 }
 h1 {
     text-align: center;
     padding-top: 30px;
+    color: white;
 }
 .main {
     margin-left: 30%;
 }
-.btn-primary {
+.btn-prim {
     margin-left: 45%;
     padding: 1%;
+    border-radius: 18px;
+    background-color: transparent;
+    border-color:#1d4d62; 
+    color: white;
+}
+.btn-prim:hover {
+    background-color: #619cb6;
+    color: white;
 }
 .res {
     margin-left: 42%;
     font-size: 25px; 
+    color: white;
 }
 .p {
     text-align: center;
+    color:#b2c0c9;
+}
+body {
+    margin: 0;
+    background-image: url(img/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 </style>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
 <head>
 
     <title>Word Count</title>
@@ -39,18 +57,17 @@ h1 {
 </head>
 
 <body>
-        <h1>Word Count Calculator for Harvard-style Referencing</h1>
+        <h1 style="color:white">Word Count Calculator for Harvard-style Referencing</h1>
         <br>
         <p class ="p">This counter will count the number of words in a text without taking parentheses into consideration. It is ideal for people using the Harvard-style referencing system. </p>
         <p class="p">If you have information in parentheses that is not a reference, make sure to add those words to the count afterwards. The program does not know what is a reference or not!</p>
-        <p class="p"><b>Update: The area for pasting your text adds a space to the beginning and counts that as a word. Remember to delete that before starting!</b></p>
-    <br>
+        <br>
 <textarea type="text" id="es" class="mytext"> </textarea>
 <div class="main"></div>
 <br>
 </div>
 <br>
-<button id="bt" class="btn btn-primary" onclick="countWords()">Count</button>
+<button id="bt" class="btn-prim" onclick="countWords()">Count</button>
 
 <br>
 <br>
@@ -64,9 +81,12 @@ h1 {
 <script>
     function countWords(es) {
         es =  String(document.getElementById("es").value);
-        var wordCount = 0;
+        var wordCount = -1;
         var insideParentheses = false;
         var i;
+        if (es === " ") {
+            wordCount = -2;
+        }
         for (i = 0; i < es.length; i++) {
             if (es[i] === " " && insideParentheses === false) {  
                 wordCount++;
