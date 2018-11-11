@@ -3,34 +3,16 @@
     margin: 0px auto;
 }
 
-@media screen and (max-width:959px) {
-    #container{
-        width:100%;
-    }
-    body, #background-image {
-        width: 100%;
-    }
-    .left-column {
-        width:50%;
-    }
-    .right-column {
-        width:50%;
-    }
-}
-
-.left-column {
-    width:50%;
-}
-.right-column {
-    width:50%;
-}
-
 .btn-info {
     background-color: transparent;
     padding-left: 22px;
     padding-right: 22px;
     padding-top: 12px;
     padding-bottom: 12px;
+    margin-right: 15px;
+}
+
+.btn2{
     margin-right: 15px;
 }
 
@@ -57,7 +39,64 @@ body {
     text-align: center;
 }
 
-.button-sec {
+#button-sec {
     padding-left: 16%;
 }
+
+#bt:hover {
+    background-color: #437697;
+}
+
+@media screen and (max-width:959px){
+    #container{
+        width:100%;
+    }
+    body{
+        margin-top:40%;
+        width:100%;
+        height:600px;
+    }
+    #btn1{
+        padding-left:4px;
+        padding-right:4px;
+        padding-top:4px;
+        padding-bottom:4px;
+        margin-right:2px;
+        font-size: 10px;
+    }
+    #btn2{
+        padding-left:4px;
+        padding-right:4px;
+        padding-top:4px;
+        padding-bottom:4px;
+        margin-right:2px;
+        font-size: 10px;
+    }
+    #btn3{
+        padding-left:4px;
+        padding-right:4px;
+        padding-top:4px;
+        padding-bottom:4px;
+        margin-right:2px;
+        font-size: 10px;
+    }
+    #btn4{
+        padding-left:4px;
+        padding-right:4px;
+        padding-top:4px;
+        padding-bottom:4px;
+        margin-right:2px;
+        font-size: 10px;
+    }
+    #title{
+        font-size:35px;
+        margin-left:6%;
+    }
+    #button-sec{
+        padding-left:0%;
+        margin-left:10%;
+        margin-right:6%;
+    }
+}
+
 
